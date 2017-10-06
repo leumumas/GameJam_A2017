@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class PlayerController1: MonoBehaviour {
 
     public float maxSpeed = 10f;
     bool facingRight = true;
@@ -20,5 +20,37 @@ public class NewBehaviourScript : MonoBehaviour {
         float Hmove = Input.GetAxis("Horizontal");
         float Vmove = Input.GetAxis("Vertical");
         GetComponent<Rigidbody2D>().velocity = new Vector2(Hmove * maxSpeed, Vmove * maxSpeed);
-	}
+
+        if (Hmove > 0)
+        {
+            facingRight = true;
+            facingLeft = false;
+            facingDown = false;
+            facingUp = false;
+        }
+
+        if (Hmove < 0)
+        {
+            facingRight = false;
+            facingLeft = true;
+            facingDown = false;
+            facingUp = false;
+        }
+
+        if (Vmove > 0)
+        {
+            facingRight = false;
+            facingLeft = false;
+            facingDown = false;
+            facingUp = true;
+        }
+
+        if (Vmove < 0)
+        {
+            facingRight = false;
+            facingLeft = false;
+            facingDown = true;
+            facingUp = false;
+        }
+    }
 }
