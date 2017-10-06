@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController1: MonoBehaviour {
+public class PlayerController1: Player {
 
-    public float maxSpeed = 10f;
+    float H1Move, V1Move;
     bool facingRight = true;
     bool facingLeft = false;
     bool facingDown = false;
@@ -17,11 +17,13 @@ public class PlayerController1: MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        float Hmove = Input.GetAxis("Horizontal");
-        float Vmove = Input.GetAxis("Vertical");
-        GetComponent<Rigidbody2D>().velocity = new Vector2(Hmove * maxSpeed, Vmove * maxSpeed);
 
-        if (Hmove > 0)
+        //Player 1
+        H1Move = Input.GetAxis("Player1_axisX");
+        V1Move = Input.GetAxis("Player1_axisY");
+        GetComponent<Rigidbody2D>().velocity = new Vector2(H1Move * maxSpeed, V1Move * maxSpeed);
+
+        if (H1Move > 0)
         {
             facingRight = true;
             facingLeft = false;
@@ -29,7 +31,7 @@ public class PlayerController1: MonoBehaviour {
             facingUp = false;
         }
 
-        if (Hmove < 0)
+        if (H1Move < 0)
         {
             facingRight = false;
             facingLeft = true;
@@ -37,7 +39,7 @@ public class PlayerController1: MonoBehaviour {
             facingUp = false;
         }
 
-        if (Vmove > 0)
+        if (V1Move > 0)
         {
             facingRight = false;
             facingLeft = false;
@@ -45,7 +47,7 @@ public class PlayerController1: MonoBehaviour {
             facingUp = true;
         }
 
-        if (Vmove < 0)
+        if (V1Move < 0)
         {
             facingRight = false;
             facingLeft = false;
