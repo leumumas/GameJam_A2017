@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	public PlayerController1 player1;
 	private Map worldMap;
 	public PlayerController2 player2;
+    private int difficulty;
 
 	void Awake() {
 		hanzo = this;
@@ -59,10 +60,13 @@ public class GameManager : MonoBehaviour {
         switch (value)
         {
             case 0:
+                difficulty = 6;
                 break;
             case 1:
+                difficulty = 7;
                 break;
             case 2:
+                difficulty = 8;
                 break;
             default:
                 break;

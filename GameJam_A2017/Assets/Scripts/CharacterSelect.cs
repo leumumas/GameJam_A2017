@@ -1,14 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CharacterSelect : MonoBehaviour {
 
-    private int _player1, _player2;
+    private int _player1, _player2; //0:Speedy 1:Shadowkitty 2:Mentalist
     private GameObject _buttons1, _buttons2, _continue, _p1, _p2, _chars;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
+    }
+
+    // Use this for initialization
+    void Start () {
         _buttons1 = GameObject.Find("Buttons1");
         _buttons2 = GameObject.Find("Buttons2");
         _continue = GameObject.Find("Continue");
@@ -94,6 +101,11 @@ public class CharacterSelect : MonoBehaviour {
         _p2.SetActive(false);
 
         _player2 = 1;
+    }
+
+    public void Play()
+    {
+        SceneManager.LoadScene("Samuel");
     }
 
     public int Player1()
