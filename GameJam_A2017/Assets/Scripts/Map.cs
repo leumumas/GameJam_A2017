@@ -9,7 +9,6 @@ public class Map : MonoBehaviour {
 	private List<House> offHouses = new List<House>();
 	int numberHouse;
 	int numHouse = 0;
-	private List<int> housesType = new List<int>();
 
 
 	void Awake() {
@@ -44,12 +43,16 @@ public class Map : MonoBehaviour {
 			for (int i = 0; i < numberHouse; i++) {
 				onHouses[i].typeDefine(Random.Range(0,3));
 			}
+			for (int i = 0; i < GameManager.Instance.numStartHouse; i++) {
+				chooseHouse ();
+			}
 		}
 	}
 
 	public void chooseHouse () {
-		int hou = Random.Range (0, onHouses.Count);
+		int hou = Random.Range (0, onHouses.Count-1);
 		onHouses[hou].clientComing();
+		offHouses.Add (onHouses[hou]);
 		onHouses.RemoveAt (hou);
 	}
 }
