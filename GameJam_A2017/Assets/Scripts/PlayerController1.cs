@@ -8,7 +8,11 @@ public class PlayerController1: Player {
     bool facingRight = true;
     bool facingLeft = false;
     bool facingDown = false;
-    bool facingUp = false;
+	bool facingUp = false;
+
+	void Awake () {
+
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +25,7 @@ public class PlayerController1: Player {
         //Player 1
         H1Move = Input.GetAxis("Player1_axisX");
         V1Move = Input.GetAxis("Player1_axisY");
+		Debug.Log (V1Move);
         GetComponent<Rigidbody2D>().velocity = new Vector2(H1Move * maxSpeed, V1Move * maxSpeed);
 
         //Facing direction

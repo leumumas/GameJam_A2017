@@ -9,7 +9,11 @@ public class PlayerController2 : Player
     bool facingRight = true;
     bool facingLeft = false;
     bool facingDown = false;
-    bool facingUp = false;
+	bool facingUp = false;
+
+	void Awake () {
+		GameManager.Instance.player2 = this;
+	}
 
     // Use this for initialization
     void Start()
