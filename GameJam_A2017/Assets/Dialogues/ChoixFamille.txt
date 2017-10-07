@@ -1,0 +1,3 @@
+﻿Voici une maison modeste, offrant l'intimité.;1
+Cette demeure possède un beaux sous-sol aménageable.;2
+Plusieurs grandes pièces sauront comblé vos bseoins.;3
