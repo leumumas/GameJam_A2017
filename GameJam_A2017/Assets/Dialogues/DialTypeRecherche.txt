@@ -1,0 +1,7 @@
+Je ne sais pas trop ce que je préfère à propos d'un maison.;0
+J'aimerais une maison relativement accueillante et chaleureuse.;1
+J'aimerais une maison qui nous permetterais de relaxer.;1
+On aimerait vraiment une maison sur un étage seulement.;2
+J'adorerais une maison avec foyer pour les soirées d'hiver.;2
+Nous avons tendances à faire souvent des soirées et nous sommes parfois bruyants;3
+Nous détestons le bruit, donc on aimerait une maison avec une bonne isolation sonore.;3

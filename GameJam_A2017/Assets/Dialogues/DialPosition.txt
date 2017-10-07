@@ -1,0 +1,7 @@
+J'hésite vraiment en ce qui concerne la position de la maison.;0
+J'aime la nature, donc j'aimerais une qui soit à proximité d'un bois.;1
+On aime la tranquillité, moins de monde aux alentours, mieux c'est.;1
+Nous adorons nous promener en ville.;2
+J'aimerais vivre près du centre-ville.;2
+J'aimerais avoir une maison près d'un parc si possible.;3
+Est-ce qu'il y a une bibliothèque proche de cette maison?;3

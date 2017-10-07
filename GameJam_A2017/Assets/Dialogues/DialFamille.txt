@@ -1,0 +1,10 @@
+﻿Je suis simplement à la recherche d'une maison.;0
+Mon âme-soeur et moi cherchons une maison.;1
+Je suis à la recherche d'une maison pour moi-même.;1
+Je prend ma retraite bientôt! Je suis à la recherche d'un maison.;1
+Ma petite famille et moi sommes à la recherche d'une maison.;2
+Je suis à la recherche d'une maison pour mes enfants et moi.;2
+J'ai "quelques" animaux avec moi-même et j'aimerais avoir de la place pour eux.;2
+Je suis à la recherche d'une maison pour accueillir mon âme-soeur, mes 6 enfants et moi.;3
+J'aimerais une maison qui pourrait accueillir mes 3 gros chiens en plus de moi même.;3
+Je suis à la recherche d'une maison qui peut accueillir 2 générations d'adultes et 1 d'enfants.;3
