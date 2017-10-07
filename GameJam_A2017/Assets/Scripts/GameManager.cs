@@ -41,4 +41,19 @@ public class GameManager : MonoBehaviour {
 	public void But() {
 		Debug.Log ("Allo");
 	}
+
+    public void Flosh()
+    {
+        player1.TypeChange(0);
+    }
+
+    public void ShadowKitty()
+    {
+        player1.TypeChange(1);
+    }
+
+    public void Mentalist()
+    {
+        player1.TypeChange(2);
+    }
 }
