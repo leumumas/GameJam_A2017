@@ -79,8 +79,12 @@ public class House : MonoBehaviour {
             if (vilainSpawn > 75)
             {
                 nVilain = Vilain.Instantiate(vilain, customer.transform);
-                //Vilain frappe sur la maison
-                
+                for (int i = 0; i < 15; i++)
+                {
+                    System.Threading.Thread.Sleep(1000);
+                }
+                Destroy(nVilain);
+                Destroy(gameObject);
             }
             else
             { Destroy(gameObject); }
