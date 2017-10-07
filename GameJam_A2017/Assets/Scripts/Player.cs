@@ -5,12 +5,25 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public float maxSpeed = 10f;
-    public int playerType;
+    public int playerType = 0;
     public int nbChoices = 4;
     public bool getThrough = false;
+    public float maxXpos, minXpos, maxYpos, minYpos;
 
     // Use this for initialization
     void Start () {
+       
+    }
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+    //Typechange, 0:Flash, 1:Get through things, 2:Mentalist
+    void TypeChange(int value)
+    {
+        playerType = value;
         switch (playerType)
         {
             case 0:
@@ -24,14 +37,10 @@ public class Player : MonoBehaviour {
             case 2:
                 nbChoices = 5;
                 break;
-            
+
             default:
-                break;
+                print("Ce type n'existe pas!");
+                return;
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
