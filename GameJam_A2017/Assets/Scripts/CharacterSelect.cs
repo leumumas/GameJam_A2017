@@ -7,14 +7,15 @@ using UnityEngine.SceneManagement;
 public class CharacterSelect : MonoBehaviour {
 
     public int _player1, _player2; //0:Speedy 1:Shadowkitty 2:Mentalist
-	private GameObject _buttons1, _buttons2, _continue, _p1, _p2, _chars;
+	private GameObject _buttons1, _buttons2, _continue, _p1, _p2, _chars, _difficulty;
 	private static CharacterSelect hanzo = null;
-    private int difficulty;
+    private int difficulty = 1;
 
 
     private void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
+        hanzo = this;
     }
 
     // Use this for initialization
@@ -26,6 +27,7 @@ public class CharacterSelect : MonoBehaviour {
         _p1 = GameObject.Find("P1");
         _p2 = GameObject.Find("P2");
         _chars = GameObject.Find("Chars");
+        _difficulty = GameObject.Find("Difficulty");
 
         _buttons1.SetActive(true);
         _buttons2.SetActive(false);
@@ -33,7 +35,9 @@ public class CharacterSelect : MonoBehaviour {
         _chars.SetActive(true);
         _p1.SetActive(true);
         _p2.SetActive(false);
-	}
+        _difficulty.SetActive(true);
+        _difficulty.GetComponent<Text>().text = "Medium";
+    }
 
     public void Flosh()
     {
@@ -131,9 +135,31 @@ public class CharacterSelect : MonoBehaviour {
 
 	}
 
+    public void Easy()
+    {
+        SetDifficulty(0);
+        _difficulty.GetComponent<Text>().text = "Easy";
+    }
+
+    public void Medium()
+    {
+        SetDifficulty(1);
+        _difficulty.GetComponent<Text>().text = "Medium";
+    }
+
+    public void Hard()
+    {
+        SetDifficulty(2);
+        _difficulty.GetComponent<Text>().text = "Hard";
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
     public void SetDifficulty(int value)
     {
-
         switch (value)
         {
             case 0:
@@ -148,5 +174,10 @@ public class CharacterSelect : MonoBehaviour {
             default:
                 break;
         }
+    }
+
+    public int GetDifficulty()
+    {
+        return difficulty;
     }
 }
