@@ -53,4 +53,19 @@ public class GameManager : MonoBehaviour {
     {
         player1.TypeChange(2);
     }
+
+    public void SetDifficulty(int value)
+    {
+        switch (value)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            default:
+                break;
+        }
+    }
 }
