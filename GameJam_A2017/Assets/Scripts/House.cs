@@ -9,6 +9,7 @@ public class House : MonoBehaviour {
 	bool disponible = true;
 	public GameObject prefabCustomer;
 	GameObject customer;
+	int points;
 	//private Timer time;
 
 
@@ -28,16 +29,20 @@ public class House : MonoBehaviour {
 		Sprite sr = null;
 		switch (t) {
 		case 0: 
-			sr = (Sprite)obSr[3];
+			sr = (Sprite)obSr [3];
+			points = 1;
 				break;
 		case 1: 
 			sr = (Sprite)obSr[2];
+			points = 2;
 				break;
 		case 2: 
 			sr = (Sprite)obSr[1];
+			points = 4;
 				break;
 		case 3: 
 			sr = (Sprite)obSr[0];
+			points = 6;
 				break;
 		}	
 		gameObject.GetComponent<SpriteRenderer> ().sprite = sr;

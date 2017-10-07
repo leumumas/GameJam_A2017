@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	public int victoryCondition = 10;
-	public int numStartHouse = 1;
+	public int numStartHouse = 6;
 	private static GameManager hanzo = null;
 	public PlayerController1 player1;
 	private Map worldMap;
