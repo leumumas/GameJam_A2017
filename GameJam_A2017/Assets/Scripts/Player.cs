@@ -13,15 +13,22 @@ public class Player : MonoBehaviour {
     public bool getThrough = false;
 	public float maxXpos, minXpos, maxYpos, minYpos;
 	public Animator anim;
+    Choix choice = new Choix();
 
     // Use this for initialization
-	void Start () {
+    void Start () {
 		
     }
 
 	public void setAnim() {
 		anim = GetComponent<Animator>();
-	}
+        choice.initChoices("assets/Dialogues/ChoixTypeRecherche.txt");
+        choice.initChoices("assets/Dialogues/ChoixFamille.txt");
+        choice.initChoices("assets/Dialogues/ChoixPosition.txt");
+        choice.initChoices("assets/Dialogues/ChoixRichesse.txt");
+        choice.initChoices("assets/Dialogues/ChoixTerrain.txt");
+        choice.initChoices("assets/Dialogues/ChoixVoisin.txt");
+    }
 	
 	// Update is called once per frame
 	void Update () {
