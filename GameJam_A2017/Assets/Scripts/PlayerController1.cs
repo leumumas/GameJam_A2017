@@ -23,6 +23,7 @@ public class PlayerController1: Player {
         V1Move = Input.GetAxis("Player1_axisY");
         GetComponent<Rigidbody2D>().velocity = new Vector2(H1Move * maxSpeed, V1Move * maxSpeed);
 
+        //Facing direction
         if (H1Move > 0)
         {
             facingRight = true;
@@ -55,7 +56,32 @@ public class PlayerController1: Player {
             facingUp = false;
         }
 
+       
+        
+
+        //Position clamping
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, minXpos, maxXpos), Mathf.Clamp(transform.position.y, minYpos, maxYpos));
 
+    }
+
+    //Get directions
+    bool Right()
+    {
+        return facingRight;
+    }
+
+    bool Left()
+    {
+        return facingLeft;
+    }
+
+    bool Up()
+    {
+        return facingUp;
+    }
+
+    bool Down()
+    {
+        return facingDown;
     }
 }

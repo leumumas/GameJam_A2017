@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
 		
 	}
 
+    //Typechange, 0:Flash, 1:Get through things, 2:Mentalist
     void TypeChange(int value)
     {
         playerType = value;
