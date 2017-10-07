@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class CharacterSelect : MonoBehaviour {
 
-    pubic int _player1, _player2; //0:Speedy 1:Shadowkitty 2:Mentalist
+    public int _player1, _player2; //0:Speedy 1:Shadowkitty 2:Mentalist
 	private GameObject _buttons1, _buttons2, _continue, _p1, _p2, _chars;
 	private static CharacterSelect hanzo = null;
+    private int difficulty;
+
 
     private void Awake()
     {
@@ -17,6 +19,7 @@ public class CharacterSelect : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
         _buttons1 = GameObject.Find("Buttons1");
         _buttons2 = GameObject.Find("Buttons2");
         _continue = GameObject.Find("Continue");
@@ -127,4 +130,23 @@ public class CharacterSelect : MonoBehaviour {
 		}
 
 	}
+
+    public void SetDifficulty(int value)
+    {
+
+        switch (value)
+        {
+            case 0:
+                difficulty = 6;
+                break;
+            case 1:
+                difficulty = 7;
+                break;
+            case 2:
+                difficulty = 8;
+                break;
+            default:
+                break;
+        }
+    }
 }
