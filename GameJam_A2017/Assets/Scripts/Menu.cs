@@ -16,12 +16,10 @@ public class Menu : MonoBehaviour {
         _main.SetActive(true);
         _options.SetActive(false);
 	}
-	
-	// Update is called once per frame
 
     public void Back()
     {
-        print("vers menu");
+        Debug.Log("vers menu");
         _main.SetActive(true);
         _options.SetActive(false);
     }
@@ -35,7 +33,7 @@ public class Menu : MonoBehaviour {
     {
         _main.SetActive(false);
         _options.SetActive(true);
-        print("vers options");
+        Debug.Log("vers options");
     }
 
     public void Exit()
