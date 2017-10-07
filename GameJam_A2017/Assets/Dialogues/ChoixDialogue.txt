@@ -1,0 +1,5 @@
+La couleur de la maison est bleu
+Le terrain fait 100m²
+Le prix est fixe à 200 000$
+Il y a 5 chambre, 2 salles de bain, 2 salons, 1 salle d'eau
+Il y a 2 etages
