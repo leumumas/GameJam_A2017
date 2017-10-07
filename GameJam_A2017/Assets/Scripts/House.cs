@@ -79,9 +79,10 @@ public class House : MonoBehaviour {
             if (vilainSpawn > 75)
             {
                 nVilain = Vilain.Instantiate(vilain, customer.transform);
-                for (int i = 0; i < 15; i++)
+                for (int i = 0; i < 30; i++)
                 {
-                    System.Threading.Thread.Sleep(1000);
+                    System.Threading.Thread.Sleep(500);
+                    OnCollisionEnter2D(nVilain.GetComponent<Collision2D>());
                 }
                 Destroy(nVilain);
                 Destroy(gameObject);
@@ -92,6 +93,38 @@ public class House : MonoBehaviour {
 		}
 	}
 
-  
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        GameObject player;
+        if (other.gameObject.name == "Player1" || other.gameObject.name == "Player2")
+        {
+            player = other.gameObject;
+
+            if (player.name == "Player1")
+            {
+                player.GetComponent<PlayerController1>().enabled = false;
+            }
+
+            if (player.name == "Player2")
+            {
+                player.GetComponent<PlayerController2>().enabled = false;
+
+            }
+
+            //Combat
+
+            if (player.name == "Player1")
+            {
+                player.GetComponent<PlayerController1>().enabled = true;
+            }
+
+            if (player.name == "Player2")
+            {
+                player.GetComponent<PlayerController2>().enabled = true;
+
+            }
+        }
+    }
+
 
 }
