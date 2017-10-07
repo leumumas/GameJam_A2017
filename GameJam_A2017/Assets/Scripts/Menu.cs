@@ -6,17 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
-    private GameObject _main, _options, _characSelect;
+    private GameObject _main, _options, _characSelect, _chars;
 
 	// Use this for initialization
 	private void Start () {
         _main = GameObject.Find("Main");
         _options = GameObject.Find("Options");
         _characSelect = GameObject.Find("Character");
+        _chars = GameObject.Find("Chars");
 
         _main.SetActive(true);
         _options.SetActive(false);
         _characSelect.SetActive(false);
+        _chars.SetActive(false);
 	}
 
     public void Back()
@@ -24,6 +26,7 @@ public class Menu : MonoBehaviour {
         _main.SetActive(true);
         _options.SetActive(false);
         _characSelect.SetActive(false);
+        _chars.SetActive(false);
     }
 
    public void Play()
@@ -31,6 +34,7 @@ public class Menu : MonoBehaviour {
         _main.SetActive(false);
         _options.SetActive(false);
         _characSelect.SetActive(true);
+        _chars.SetActive(true);
     }
 
     public void Options()
@@ -38,6 +42,7 @@ public class Menu : MonoBehaviour {
         _main.SetActive(false);
         _options.SetActive(true);
         _characSelect.SetActive(false);
+        _chars.SetActive(false);
     }
 
     public void Exit()
