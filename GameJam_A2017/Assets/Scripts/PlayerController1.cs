@@ -5,14 +5,18 @@ using UnityEngine;
 public class PlayerController1: Player {
 
     float H1Move, V1Move;
-    bool facingRight = true;
+	bool facingRight = false;
     bool facingLeft = false;
-    bool facingDown = false;
-    bool facingUp = false;
+    bool facingDown = true;
+	bool facingUp = false;
+
+	void Awake () {
+	}
 
 	// Use this for initialization
 	void Start () {
-		
+		setAnim ();
+		GameManager.Instance.player1 = this;
 	}
 	
 	// Update is called once per frame
@@ -21,6 +25,7 @@ public class PlayerController1: Player {
         //Player 1
         H1Move = Input.GetAxis("Player1_axisX");
         V1Move = Input.GetAxis("Player1_axisY");
+		Debug.Log (V1Move);
         GetComponent<Rigidbody2D>().velocity = new Vector2(H1Move * maxSpeed, V1Move * maxSpeed);
 
         //Facing direction
@@ -62,6 +67,10 @@ public class PlayerController1: Player {
         //Position clamping
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, minXpos, maxXpos), Mathf.Clamp(transform.position.y, minYpos, maxYpos));
 
+		anim.SetBool ("FacingUp", facingUp);
+		anim.SetBool ("FacingDown", facingDown);
+		anim.SetBool ("FacingRight", facingRight);
+		anim.SetBool ("FacingLeft", facingLeft);
     }
 
     //Get directions

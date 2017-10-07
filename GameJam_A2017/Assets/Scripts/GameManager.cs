@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 	private static GameManager hanzo = null;
 	public PlayerController1 player1;
 	private Map worldMap;
-	//public PlayerController2 player2;
+	public PlayerController2 player2;
 
 	void Awake() {
 		hanzo = this;
@@ -19,9 +19,8 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		worldMap = Map.Instance;
-		/*for (int i = 0; i < numStartHouse; i++) {
-			worldMap.chooseHouse ();
-		}*/
+		player1.TypeChange (CharacterSelect.Instance._player1);
+		player2.TypeChange (CharacterSelect.Instance._player2);
 	}
 	
 	// Update is called once per frame
@@ -56,4 +55,5 @@ public class GameManager : MonoBehaviour {
     {
         player1.TypeChange(2);
     }
+
 }
