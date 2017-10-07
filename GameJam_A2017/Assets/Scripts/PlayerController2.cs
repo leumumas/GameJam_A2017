@@ -5,20 +5,21 @@ using UnityEngine;
 public class PlayerController2 : Player
 {
 
-    float H2Move, V2Move;
-    bool facingRight = true;
-    bool facingLeft = false;
-    bool facingDown = false;
+	float H2Move, V2Move;
+	bool facingRight = false;
+	bool facingLeft = false;
+	bool facingDown = true;
 	bool facingUp = false;
+	Animator anim;
 
 	void Awake () {
-		GameManager.Instance.player2 = this;
 	}
 
     // Use this for initialization
     void Start()
-    {
-
+	{
+		GameManager.Instance.player2 = this;
+		anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -64,7 +65,12 @@ public class PlayerController2 : Player
         }
 
         //Position clamping
-        transform.position = new Vector2(Mathf.Clamp(transform.position.x, minXpos, maxXpos), Mathf.Clamp(transform.position.y, minYpos, maxYpos));
+		transform.position = new Vector2(Mathf.Clamp(transform.position.x, minXpos, maxXpos), Mathf.Clamp(transform.position.y, minYpos, maxYpos));
+
+		anim.SetBool ("FacingUp", facingUp);
+		anim.SetBool ("FacingDown", facingDown);
+		anim.SetBool ("FacingRight", facingRight);
+		anim.SetBool ("FacingLeft", facingLeft);
     }
 
     //Get directions

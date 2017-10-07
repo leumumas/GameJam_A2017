@@ -25,23 +25,23 @@ public class House : MonoBehaviour {
 	}
 
 	public void typeDefine (int t) {
-		Object [] obSr = Resources.LoadAll("Land_SpriteSheet");
+		Object [] obSr = Resources.LoadAll("Land_SpriteSheet 1");
 		Sprite sr = null;
 		switch (t) {
 		case 0: 
-			sr = (Sprite)obSr [3];
+			sr = (Sprite)obSr [5];
 			points = 1;
 				break;
 		case 1: 
-			sr = (Sprite)obSr[2];
+			sr = (Sprite)obSr[6];
 			points = 2;
 				break;
 		case 2: 
-			sr = (Sprite)obSr[1];
+			sr = (Sprite)obSr[7];
 			points = 4;
 				break;
 		case 3: 
-			sr = (Sprite)obSr[0];
+			sr = (Sprite)obSr[8];
 			points = 6;
 				break;
 		}	

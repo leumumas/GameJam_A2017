@@ -5,18 +5,19 @@ using UnityEngine;
 public class PlayerController1: Player {
 
     float H1Move, V1Move;
-    bool facingRight = true;
+	bool facingRight = false;
     bool facingLeft = false;
-    bool facingDown = false;
+    bool facingDown = true;
 	bool facingUp = false;
+	Animator anim;
 
 	void Awake () {
-
 	}
 
 	// Use this for initialization
 	void Start () {
-		
+		GameManager.Instance.player1 = this;
+		anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -67,6 +68,10 @@ public class PlayerController1: Player {
         //Position clamping
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, minXpos, maxXpos), Mathf.Clamp(transform.position.y, minYpos, maxYpos));
 
+		anim.SetBool ("FacingUp", facingUp);
+		anim.SetBool ("FacingDown", facingDown);
+		anim.SetBool ("FacingRight", facingRight);
+		anim.SetBool ("FacingLeft", facingLeft);
     }
 
     //Get directions
