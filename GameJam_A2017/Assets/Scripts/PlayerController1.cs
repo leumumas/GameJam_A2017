@@ -15,6 +15,7 @@ public class PlayerController1: Player {
 
 	// Use this for initialization
 	void Start () {
+		setAnim ();
 		GameManager.Instance.player1 = this;
 	}
 	

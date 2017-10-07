@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		worldMap = Map.Instance;
+		player1.TypeChange (CharacterSelect.Instance._player1);
+		player2.TypeChange (CharacterSelect.Instance._player2);
 	}
 	
 	// Update is called once per frame

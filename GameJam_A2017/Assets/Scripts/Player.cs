@@ -14,8 +14,12 @@ public class Player : MonoBehaviour {
 
     // Use this for initialization
 	void Start () {
-		anim = GetComponent<Animator>();
+		
     }
+
+	public void setAnim() {
+		anim = GetComponent<Animator>();
+	}
 	
 	// Update is called once per frame
 	void Update () {
