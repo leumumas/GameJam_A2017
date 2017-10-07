@@ -5,9 +5,12 @@ using UnityEngine;
 public class Map : MonoBehaviour {
 
 	private static Map hanzo = null;
-	private List<House> houses = new List<House>();
+	private List<House> onHouses = new List<House>();
+	private List<House> offHouses = new List<House>();
 	int numberHouse;
 	int numHouse = 0;
+	private List<int> housesType = new List<int>();
+
 
 	void Awake() {
 		hanzo = this;
@@ -34,10 +37,19 @@ public class Map : MonoBehaviour {
 	}
 
 	public void addHouses (House h) {
-		houses.Add (h);
+		onHouses.Add (h);
 		numHouse++;
 		if (numHouse >= numberHouse) {
 			Debug.Log ("GG tous les maisons sont là");
+			for (int i = 0; i < numberHouse; i++) {
+				onHouses[i].typeDefine(Random.Range(0,3));
+			}
 		}
+	}
+
+	public void chooseHouse () {
+		int hou = Random.Range (0, onHouses.Count);
+		onHouses[hou].clientComing();
+		onHouses.RemoveAt (hou);
 	}
 }

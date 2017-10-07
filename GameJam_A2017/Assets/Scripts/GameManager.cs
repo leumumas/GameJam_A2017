@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	public int victoryCondition = 10;
+	public int numStartHouse = 6;
 	private static GameManager hanzo = null;
 	public PlayerController1 player1;
 	private Map worldMap;
@@ -18,7 +19,9 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		worldMap = Map.Instance;
-		Map m = worldMap;
+		for (int i = 0; i < numStartHouse; i++) {
+			worldMap.chooseHouse ();
+		}
 	}
 	
 	// Update is called once per frame

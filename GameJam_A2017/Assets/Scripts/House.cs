@@ -5,6 +5,8 @@ using UnityEngine;
 public class House : MonoBehaviour {
 
 	int Type = 1;
+	public int posClient;
+	bool disponible = true;
 	//private Timer time;
 
 
@@ -19,7 +21,7 @@ public class House : MonoBehaviour {
 		
 	}
 
-	void typeDefine (int t) {
+	public void typeDefine (int t) {
 		switch (t) {
 		case 0: 
 			gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite>("Pauvre");
@@ -34,5 +36,9 @@ public class House : MonoBehaviour {
 			gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite>("RAF");
 				break;
 		}	
+	}
+
+	public void clientComing () {
+		disponible = false;
 	}
 }
