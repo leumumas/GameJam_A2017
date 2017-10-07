@@ -2,11 +2,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class timer : MonoBehaviour
+public class Timer : MonoBehaviour
 {
-    public Text timerText;
-    public float timeRemaining = 60;
-    int time;
+	private float maxTime;
+	float time;
+	public Slider timerHud;
+	public Text temps;
+	bool active;
     
 
     // Use this for initialization
@@ -14,23 +16,35 @@ public class timer : MonoBehaviour
     {
         //Random(timeRemaining);//
         time = Random.Range(30,60);
-        timerText = GetComponent<Text>();
+		maxTime = time;
+		active = false;
+		timerHud.gameObject.SetActive (false);
     }
 
     // Update is called once per frame
     void Update()
     {
-       // return obj.().ToString();//
-        timeRemaining -= Time.deltaTime; //countdown
-        timerText.text = timeRemaining.ToString("f2"); //"f2", pour les décimals
-        print(timeRemaining);
+		if (active) {
+			// return obj.().ToString();//
+			time -= Time.deltaTime; //countdown
+			temps.text = time.ToString ("f0"); //"f2", pour les décimals
 
-        if (timeRemaining <= 0) //Détruire le "gameObjet" attaché si le compteur arrive à 0:00
-        {
-            //playAudio = Bruh;//
-            Destroy(gameObject);
-        }
+			if (time <= 0) { //Détruire le "gameObjet" attaché si le compteur arrive à 0:00
+				//playAudio = Bruh;//
+				House isHouse = gameObject.GetComponent<House> ();
+				isHouse.end (true);
+			}
+			timerHud.value = time / maxTime;
+		}
     }
 
-
+	public void Switch () {
+		if (active) {
+			active = false;
+			timerHud.gameObject.SetActive (false);
+		} else {
+			active = true;
+			timerHud.gameObject.SetActive (true);
+		}
+	}
 }

@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		worldMap = Map.Instance;
-		for (int i = 0; i < numStartHouse; i++) {
+		/*for (int i = 0; i < numStartHouse; i++) {
 			worldMap.chooseHouse ();
-		}
+		}*/
 	}
 	
 	// Update is called once per frame
@@ -37,4 +37,23 @@ public class GameManager : MonoBehaviour {
 		}
 
 	}
+
+	public void But() {
+		Debug.Log ("Allo");
+	}
+
+    public void Flosh()
+    {
+        player1.TypeChange(0);
+    }
+
+    public void ShadowKitty()
+    {
+        player1.TypeChange(1);
+    }
+
+    public void Mentalist()
+    {
+        player1.TypeChange(2);
+    }
 }
