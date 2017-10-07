@@ -111,7 +111,7 @@ public class House : MonoBehaviour {
 
             }
 
-            //Combat
+            Shifumi();
 
             if (player.name == "Player1")
             {
@@ -126,5 +126,94 @@ public class House : MonoBehaviour {
         }
     }
 
+    void Shifumi()
+    {
+        int strikes = 0;
+        int wins = 0;
+        int vilainChoice = Random.Range(0,3);
+        int playerChoice = 0;
+
+        while(wins != 3 || strikes != 3)
+        {         
+            System.Threading.Thread.Sleep(2000);
+            //Player choisi kekchose
+            switch (playerChoice)
+            {
+                case 0:
+                    switch (vilainChoice)
+                    {
+                        case 0:
+                            print("Roche vs. Roche, round nulle!");
+                            break;
+
+                        case 1:
+                            print("Roche vs. Papier, le vilain gagne le round!");
+                            strikes++;
+                            break;
+
+                        case 2:
+                            print("Roche vs. Ciseaux, vous gagnez le round!");
+                            wins++;
+                            break;
+
+                        default:
+                            print("Dafuq kossé que t'essaye de faire lo?!?!?!");
+                            return;
+                    }
+                    break;
+
+                case 1:
+                    switch (vilainChoice)
+                    {
+                        case 0:
+                            print("Papier vs. Roche, vous gagnez le round!");
+                            wins++;
+                            break;
+
+                        case 1:
+                            print("Papier vs. Papier, round nulle!");
+                            break;
+
+                        case 2:
+                            print("Papier vs. Ciseaux, vous perdez le round!");
+                            strikes++;
+                            break;
+
+                        default:
+                            print("Dafuq kossé que t'essaye de faire lo?!?!?!");
+                            return;
+                    }
+                    break;
+
+                case 2:
+                    switch (vilainChoice)
+                    {
+                        case 0:
+                            print("Ciseaux vs. Roche, vous perdez le round!");
+                            strikes++;
+                            break;
+
+                        case 1:
+                            print("Ciseaux vs. Papier, vous gagnez le round!");
+                            wins++;
+                            break;
+
+                        case 2:
+                            print("Ciseaux vs. Ciseaux, round nulle!");
+                            break;
+
+                        default:
+                            print("Dafuq kossé que t'essaye de faire lo?!?!?!");
+                            return;
+                    }
+                    break;
+
+                default:
+                    print("Dafuq kossé que t'essaye de faire lo?!?!?!");
+                    return;
+            }
+        }
+
+    }
 
 }
