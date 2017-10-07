@@ -17,6 +17,8 @@ public class PlayerController1: Player {
 	void Start () {
 		setAnim ();
 		GameManager.Instance.player1 = this;
+		//int type = CharacterSelect.Instance._player1;
+		//TypeChange (type);
 	}
 	
 	// Update is called once per frame

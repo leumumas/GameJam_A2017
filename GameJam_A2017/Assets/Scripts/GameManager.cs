@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		worldMap = Map.Instance;
-		player1.TypeChange (CharacterSelect.Instance._player1);
-		player2.TypeChange (CharacterSelect.Instance._player2);
 	}
 	
 	// Update is called once per frame
@@ -56,4 +54,14 @@ public class GameManager : MonoBehaviour {
         player1.TypeChange(2);
     }
 
+	public void endGame(int result) {
+		switch (result) {
+		case 0: //victoire p1
+			break;
+		case 1: //victoire p2
+			break;
+		case 2: //plus de maison
+			break;
+		}
+	}
 }

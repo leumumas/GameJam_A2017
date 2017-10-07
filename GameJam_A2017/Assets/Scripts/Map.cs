@@ -50,9 +50,14 @@ public class Map : MonoBehaviour {
 	}
 
 	public void chooseHouse () {
-		int hou = Random.Range (0, onHouses.Count-1);
-		onHouses[hou].clientComing();
-		offHouses.Add (onHouses[hou]);
-		onHouses.RemoveAt (hou);
+		if (onHouses.Count > 0) {
+			int hou = Random.Range (0, onHouses.Count - 1);
+			onHouses [hou].clientComing ();
+			offHouses.Add (onHouses [hou]);
+			onHouses.RemoveAt (hou);
+		} else {
+			if (GameObject.FindGameObjectsWithTag("House").Length <= 1)
+				GameManager.Instance.endGame (2);
+		}
 	}
 }
