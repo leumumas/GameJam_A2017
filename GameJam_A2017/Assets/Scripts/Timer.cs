@@ -39,6 +39,7 @@ public class Timer : MonoBehaviour
     }
 
 	public void Switch () {
+        print("time");
 		if (active) {
 			active = false;
 			timerHud.gameObject.SetActive (false);

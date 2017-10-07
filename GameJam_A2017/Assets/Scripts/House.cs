@@ -8,7 +8,8 @@ public class House : MonoBehaviour {
 	public int posClient;
 	bool disponible = true;
 	public GameObject prefabCustomer;
-	GameObject customer, vilain, nVilain;
+    public GameObject vilain;
+	GameObject customer, nVilain;
 	int points;
     int vilainSpawn;
 
@@ -16,6 +17,7 @@ public class House : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Map.Instance.addHouses (this);
+        print("add houses");
 		typeDefine (Type);
 	}
 	
@@ -68,9 +70,10 @@ public class House : MonoBehaviour {
 			break;
 		}
 		customer = Instantiate (prefabCustomer, (gameObject.transform.localPosition + posFinal), Quaternion.identity);
+        print("customer instancier");
 		customer.transform.parent = gameObject.transform;
-		Timer time = gameObject.GetComponent<Timer> ();
-		time.Switch ();
+        Timer time = gameObject.GetComponent<Timer>();
+		time.Switch();
 	}
 
 	public void end(bool timeOut) {
@@ -79,6 +82,7 @@ public class House : MonoBehaviour {
             if (vilainSpawn > 75)
             {
                 nVilain = Vilain.Instantiate(vilain, customer.transform);
+                print("Vilain spawned");
                 for (int i = 0; i < 30; i++)
                 {
                     System.Threading.Thread.Sleep(500);

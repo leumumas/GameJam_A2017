@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Vilain : MonoBehaviour {
 
-    public int HP, attack;
 
 	// Use this for initialization
 	void Start () {
-        HP = 10;
-        attack = 1;
+        
 	}
 	
 	// Update is called once per frame
