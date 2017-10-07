@@ -23,7 +23,7 @@ public class ActivateTextAtLine : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (waitForPress && Input.GetKeyDown(KeyCode.J)) {
+		/*if (waitForPress && Input.GetKeyDown(KeyCode.J)) {
 			theTextBox.ReloadScript (theText);
 			theTextBox.currentLine = startLine;
 			theTextBox.endAtLine = endLine;
@@ -31,7 +31,8 @@ public class ActivateTextAtLine : MonoBehaviour {
 
 			if (destoryWhenActivated)
 				Destroy (gameObject);
-		}
+		}*/
+
 	}
 
 	void OnTriggerEnter2D(Collider2D other)

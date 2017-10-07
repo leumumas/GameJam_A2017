@@ -116,7 +116,6 @@ public class textBoxManager : MonoBehaviour {
 			textLines = new string[1];
 			textLines = theText.text.Split('\n');
 		}
-
-
+			
 	}
 }
