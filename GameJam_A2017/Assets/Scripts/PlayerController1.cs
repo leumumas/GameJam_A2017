@@ -8,7 +8,11 @@ public class PlayerController1: Player {
     bool facingRight = true;
     bool facingLeft = false;
     bool facingDown = false;
-    bool facingUp = false;
+	bool facingUp = false;
+
+	void Awake () {
+
+	}
 
 	// Use this for initialization
 	void Start () {
