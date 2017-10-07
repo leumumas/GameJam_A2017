@@ -57,5 +57,7 @@ public class PlayerController2 : Player
             facingDown = true;
             facingUp = false;
         }
+
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x, minXpos, maxXpos), Mathf.Clamp(transform.position.y, minYpos, maxYpos));
     }
 }
