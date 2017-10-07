@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public float maxSpeed = 10f;
+    public int HP = 10;
+    public int attack = 2;
     public int playerType = 0;
     public int nbChoices = 4;
 	public int points = 0;
@@ -51,5 +53,10 @@ public class Player : MonoBehaviour {
                 print("Ce type n'existe pas!");
                 return;
         }
+    }
+
+    public void HPDecrease(ref int HP)
+    {
+        HP--;
     }
 }

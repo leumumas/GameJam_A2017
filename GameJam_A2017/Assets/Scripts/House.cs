@@ -8,9 +8,9 @@ public class House : MonoBehaviour {
 	public int posClient;
 	bool disponible = true;
 	public GameObject prefabCustomer;
-	GameObject customer;
+	GameObject customer, vilain, nVilain;
 	int points;
-	//private Timer time;
+    int vilainSpawn;
 
 
 	// Use this for initialization
@@ -21,8 +21,9 @@ public class House : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+       
+        
+    }
 
 	public void typeDefine (int t) {
 		Object [] obSr = Resources.LoadAll("Land_SpriteSheet 1");
@@ -74,8 +75,19 @@ public class House : MonoBehaviour {
 
 	public void end(bool timeOut) {
 		if (timeOut) {
-			Destroy (gameObject);
+            vilainSpawn = Random.Range(0, 101);
+            if (vilainSpawn > 75)
+            {
+                nVilain = Vilain.Instantiate(vilain, customer.transform);
+                //Vilain frappe sur la maison
+                
+            }
+            else
+            { Destroy(gameObject); }
 			Map.Instance.chooseHouse ();
 		}
 	}
+
+  
+
 }
