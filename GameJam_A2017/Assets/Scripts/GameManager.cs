@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour {
 
     public void SetDifficulty(int value)
     {
+        
         switch (value)
         {
             case 0:

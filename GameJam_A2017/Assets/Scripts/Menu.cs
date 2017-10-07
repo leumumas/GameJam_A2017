@@ -45,19 +45,19 @@ public class Menu : MonoBehaviour {
         _chars.SetActive(false);
     }
 
-    public void Easy()
+    public int Easy()
     {
-
+        return 0;
     }
 
-    public void Medium()
+    public int Medium()
     {
-
+        return 1;
     }
 
-    public void Hard()
+    public int Hard()
     {
-
+        return 2;
     }
 
     public void Exit()
