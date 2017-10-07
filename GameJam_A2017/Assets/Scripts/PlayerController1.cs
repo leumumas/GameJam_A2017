@@ -9,7 +9,6 @@ public class PlayerController1: Player {
     bool facingLeft = false;
     bool facingDown = true;
 	bool facingUp = false;
-	Animator anim;
 
 	void Awake () {
 	}
@@ -17,7 +16,6 @@ public class PlayerController1: Player {
 	// Use this for initialization
 	void Start () {
 		GameManager.Instance.player1 = this;
-		anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
