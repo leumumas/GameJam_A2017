@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AnimationFin : MonoBehaviour {
 
     public GameObject soldOut;
+    public GameObject spriteGagnant;
+
+    public Button btnRestart;
 
     public Text textHaut;
     public Text textBas;
@@ -17,10 +21,15 @@ public class AnimationFin : MonoBehaviour {
     public bool isTyping;
     public bool cancelTyping;
 
-	// Use this for initialization
-	IEnumerator Start () {
+    public int scoreP1 = GameManager.Instance.player1.points;
+    public int scoreP2 = GameManager.Instance.player2.points;
+
+    // Use this for initialization
+    IEnumerator Start () {
         textHaut.text = "";
-        textBas.text = "";    
+        textBas.text = "";
+
+        btnRestart.enabled = false;    
 
         SpriteRenderer tmp = soldOut.GetComponent<SpriteRenderer>();
         tmp.color = new Color(1,1,1,1);
@@ -35,9 +44,39 @@ public class AnimationFin : MonoBehaviour {
 
         yield return new WaitForSeconds(2f);
 
-        textBas.text = "Joueur 1!!!!";
+        int result = 4;
 
-        scoreText.text = "Score final: "/* + ScoreJoueur*/;
+        if (scoreP1 > scoreP2)
+            result = 0;
+        if (scoreP1 < scoreP2)
+            result = 1;
+        if (scoreP1 == scoreP2)
+            result = 2;
+
+        switch (result) {
+            case 0:
+                textBas.text = "Joueur 1!!!!";
+                spriteGagnant.GetComponent<SpriteRenderer>().sprite = GameManager.Instance.player1.GetComponent<SpriteRenderer>().sprite;
+                scoreText.text = "Score final: " + scoreP1;
+                break;
+            case 1:
+                textBas.text = "Joueur 2!!!!";
+                spriteGagnant.GetComponent<SpriteRenderer>().sprite = GameManager.Instance.player2.GetComponent<SpriteRenderer>().sprite;
+                scoreText.text = "Score final: " + scoreP2;
+                break;
+            case 2:
+                textBas.text = "Match Nul";
+
+                scoreText.text = "Score final: " + scoreP1;
+                break;
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        btnRestart.enabled = true;
+        btnRestart.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+        btnRestart.GetComponentInChildren<Text>().color = new Color(0, 0, 0, 1);
+        
     }
 	
 	// Update is called once per frame
@@ -78,5 +117,14 @@ public class AnimationFin : MonoBehaviour {
         textHaut.text = lineOfText;
         isTyping = false;
         cancelTyping = false;
+    }
+
+    public void TaskOnClick()
+    {
+        
+        Destroy(CharacterSelect.Instance.gameObject);
+        Destroy(GameManager.Instance.gameObject);
+
+        SceneManager.LoadScene("Patrick");
     }
 }
