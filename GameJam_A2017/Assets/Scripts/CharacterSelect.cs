@@ -163,10 +163,7 @@ public class CharacterSelect : MonoBehaviour {
         SceneManager.LoadScene("Noelson");
     }
 
-    public void Game()
-    {
-        SceneManager.LoadScene("Samuel");
-    }
+    
 
     public void SetDifficulty(int value)
     {
