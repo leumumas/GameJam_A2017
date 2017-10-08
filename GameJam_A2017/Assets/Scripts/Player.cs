@@ -13,21 +13,16 @@ public class Player : MonoBehaviour {
     public bool getThrough = false;
 	public float maxXpos, minXpos, maxYpos, minYpos;
 	public Animator anim;
-    Choix choice = new Choix();
+    public Choix choice;
+	public House curhouse;
 
     // Use this for initialization
     void Start () {
-		
     }
 
 	public void setAnim() {
 		anim = GetComponent<Animator>();
-        choice.initChoices("assets/Dialogues/ChoixTypeRecherche.txt");
-        choice.initChoices("assets/Dialogues/ChoixFamille.txt");
-        choice.initChoices("assets/Dialogues/ChoixPosition.txt");
-        choice.initChoices("assets/Dialogues/ChoixRichesse.txt");
-        choice.initChoices("assets/Dialogues/ChoixTerrain.txt");
-        choice.initChoices("assets/Dialogues/ChoixVoisin.txt");
+		choice = new Choix ();
     }
 	
 	// Update is called once per frame
@@ -46,13 +41,14 @@ public class Player : MonoBehaviour {
 			anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("flashy");
                 break;
 
-            case 1:
+		case 1:
 			getThrough = true;
+			gameObject.GetComponent<Collider2D> ().isTrigger = true;
 			anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("ombre");
                 break;
 
             case 2:
-			nbChoices = 5;
+			nbChoices -= 2;
 			anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("mental");
                 break;
 
@@ -66,4 +62,8 @@ public class Player : MonoBehaviour {
     {
         HP--;
     }
+
+	public void setupChoice (int cat, int val) {
+		choice.setup (cat, val, nbChoices);
+	}
 }

@@ -10,6 +10,10 @@ public class PlayerController2 : Player
 	bool facingLeft = false;
 	bool facingDown = true;
 	bool facingUp = false;
+	public bool canWalk = true;
+	public GameObject textBox;
+	public GameObject choiceBox;
+	public GameObject prefabChoice;
 
 	void Awake () {
 	}
@@ -19,14 +23,18 @@ public class PlayerController2 : Player
 	{
 		setAnim ();
 		GameManager.Instance.player2 = this;
-		//int type = CharacterSelect.Instance._player2;
-		//TypeChange (type);
+		nbChoices = CharacterSelect.Instance.GetDifficulty();
+		TypeChange (CharacterSelect.Instance._player2);
     }
 
     // Update is called once per frame
     void FixedUpdate()
-    {
+	{
 
+		if (!canWalk) {
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+			return;
+		}
         //Player 2
         H2Move = Input.GetAxis("Player2_axisX");
         V2Move = Input.GetAxis("Player2_axisY");
@@ -93,5 +101,9 @@ public class PlayerController2 : Player
     bool Down()
     {
         return facingDown;
-    }
+	}
+
+	public void choiceSetup(int cat, int val) {
+		setupChoice (cat, val);
+	}
 }

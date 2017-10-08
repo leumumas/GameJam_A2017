@@ -10,8 +10,9 @@ public class House : MonoBehaviour {
 	public GameObject prefabCustomer;
     public GameObject vilain;
 	GameObject customer, nVilain;
-	int points;
+	public int points;
     int vilainSpawn;
+	public Timer time;
 
 
 	// Use this for initialization
@@ -72,7 +73,8 @@ public class House : MonoBehaviour {
 		customer = Instantiate (prefabCustomer, (gameObject.transform.localPosition + posFinal), Quaternion.identity);
         print("customer instancier");
 		customer.transform.parent = gameObject.transform;
-        Timer time = gameObject.GetComponent<Timer>();
+		customer.GetComponent<Customers> ().curHouse = this;
+        time = gameObject.GetComponent<Timer>();
 		time.Switch();
 	}
 

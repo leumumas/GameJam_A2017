@@ -9,7 +9,7 @@ public class CharacterSelect : MonoBehaviour {
     public int _player1, _player2; //0:Speedy 1:Shadowkitty 2:Mentalist
 	private GameObject _buttons1, _buttons2, _continue, _p1, _p2, _chars, _difficulty;
 	private static CharacterSelect hanzo = null;
-    private int difficulty = 1;
+    private int difficulty = 7;
 
 
     private void Awake()

@@ -76,10 +76,10 @@ public class textBoxManagerAdpated : MonoBehaviour
         if (endAtLine == 0)
             endAtLine = ligneNPC.Length - 1;
 
-        if (isActive)
+        /*if (isActive)
             EnableTextBox();
         else
-            DisableTextBox();
+            DisableTextBox();*/
     }
 
     // Update is called once per frame
@@ -92,7 +92,7 @@ public class textBoxManagerAdpated : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Return))
+		if (Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
             if (!isTyping)
             {
@@ -121,7 +121,9 @@ public class textBoxManagerAdpated : MonoBehaviour
     private IEnumerator TextScroll(string lineOfText)
     {
         int letter = 0;
-        theText.text = "";
+        //theText.text = "";
+		theText = textBox.GetComponentInChildren<Text>();
+		theText.text = "";
         isTyping = true;
         cancelTyping = false;
 
