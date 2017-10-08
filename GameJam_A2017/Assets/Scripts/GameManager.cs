@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour {
 	public PlayerController1 player1;
 	private Map worldMap;
 	public PlayerController2 player2;
+	public int p1, p2;
+	public Sprite sP1, sP2;
+	bool fini = false;
 
 	void Awake() {
 		DontDestroyOnLoad (gameObject);
@@ -20,13 +23,18 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		worldMap = Map.Instance;
-		victoryCondition = CharacterSelect.Instance.GetDifficulty() * 10;
+		if (CharacterSelect.Instance == null)
+			victoryCondition = 10;
+		else
+			victoryCondition = CharacterSelect.Instance.GetDifficulty() * 2;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (GameObject.FindGameObjectsWithTag ("House").Length <= 0)
+		if (GameObject.FindGameObjectsWithTag ("House").Length <= 0 && !fini) {
+			fini = true;
 			endGame (3);
+		}
 	}
 
 	public static GameManager Instance
@@ -58,8 +66,12 @@ public class GameManager : MonoBehaviour {
     }
 
 	public void endGame(int result) {
-		player1.canWalk = false;
-		player2.canWalk = false;
+		/*player1.canWalk = false;
+		player2.canWalk = false;*/
+		p1 = player1.points;
+		sP1 = player1.gameObject.GetComponent<SpriteRenderer> ().sprite;
+		p2 = player2.points;
+		sP2 = player2.gameObject.GetComponent<SpriteRenderer> ().sprite;
 		SceneManager.LoadScene ("Jean-Philippe");
 		/*switch (result) {
 		case 0: //victoire p1

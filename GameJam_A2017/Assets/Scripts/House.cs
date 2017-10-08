@@ -78,27 +78,40 @@ public class House : MonoBehaviour {
 		time.Switch();
 	}
 
+	public void lose () {
+		gameObject.tag = "Destroy";
+		Object[] obSr = Resources.LoadAll ("explosion");
+		Sprite sr = (Sprite)obSr [7];
+		gameObject.GetComponent<SpriteRenderer> ().sprite = sr;
+		gameObject.GetComponent<Collider2D> ().enabled = false;
+		Destroy (customer);
+		if (nVilain != null)
+			Destroy (nVilain);
+		Map.Instance.chooseHouse ();
+	}
+
 	public void end(bool timeOut) {
 		if (timeOut) {
-			//vilainSpawn = Random.Range (0, 101);
-			if (vilainSpawn > 75) {
-				nVilain = Vilain.Instantiate (vilain, customer.transform);
+			vilainSpawn = Random.Range (0, 100);
+			if (vilainSpawn > 0) {
+				nVilain = Vilain.Instantiate (vilain, customer.gameObject.transform.position, Quaternion.identity);
+				nVilain.transform.SetParent (this.gameObject.transform);
+				nVilain.GetComponent<Vilain> ().curHouse = this;
+				Destroy (customer.gameObject);
 				print ("Vilain spawned");
-				for (int i = 0; i < 30; i++) {
+				/*for (int i = 0; i < 30; i++) {
 					System.Threading.Thread.Sleep (500);
 					OnCollisionEnter2D (nVilain.GetComponent<Collision2D> ());
 				}
-				Destroy (nVilain);
-			}
-			/*anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("House");
+				Destroy (nVilain);*/
+			} else {
+				/*anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("House");
 			System.Threading.Thread.Sleep (1000);*/
-			gameObject.tag = "Destroy";
-			Object [] obSr = Resources.LoadAll("explosion");
-			Sprite sr = (Sprite)obSr[7];
-			gameObject.GetComponent<SpriteRenderer> ().sprite = sr;
-			Destroy (customer);
-			Map.Instance.chooseHouse ();
+				lose ();
+			}
 		} else {
+			if (nVilain != null)
+				Destroy (nVilain);
 			Destroy (customer);
 			sold.SetActive (true);
 			Map.Instance.onHouses.Remove (this);
@@ -107,7 +120,7 @@ public class House : MonoBehaviour {
 		}
 	}
 
-    private void OnCollisionEnter2D(Collision2D other)
+    /*private void OnCollisionEnter2D(Collision2D other)
     {
         GameObject player;
         if (other.gameObject.name == "Player1" || other.gameObject.name == "Player2")
@@ -138,96 +151,5 @@ public class House : MonoBehaviour {
 
             }
         }
-    }
-
-    void Shifumi()
-    {
-        int strikes = 0;
-        int wins = 0;
-        int vilainChoice = Random.Range(0,3);
-        int playerChoice = 0;
-
-        while(wins != 3 || strikes != 3)
-        {         
-            System.Threading.Thread.Sleep(2000);
-            //Player choisi kekchose
-            switch (playerChoice)
-            {
-                case 0:
-                    switch (vilainChoice)
-                    {
-                        case 0:
-                            print("Roche vs. Roche, round nulle!");
-                            break;
-
-                        case 1:
-                            print("Roche vs. Papier, le vilain gagne le round!");
-                            strikes++;
-                            break;
-
-                        case 2:
-                            print("Roche vs. Ciseaux, vous gagnez le round!");
-                            wins++;
-                            break;
-
-                        default:
-                            print("Dafuq kossé que t'essaye de faire lo?!?!?!");
-                            return;
-                    }
-                    break;
-
-                case 1:
-                    switch (vilainChoice)
-                    {
-                        case 0:
-                            print("Papier vs. Roche, vous gagnez le round!");
-                            wins++;
-                            break;
-
-                        case 1:
-                            print("Papier vs. Papier, round nulle!");
-                            break;
-
-                        case 2:
-                            print("Papier vs. Ciseaux, vous perdez le round!");
-                            strikes++;
-                            break;
-
-                        default:
-                            print("Dafuq kossé que t'essaye de faire lo?!?!?!");
-                            return;
-                    }
-                    break;
-
-                case 2:
-                    switch (vilainChoice)
-                    {
-                        case 0:
-                            print("Ciseaux vs. Roche, vous perdez le round!");
-                            strikes++;
-                            break;
-
-                        case 1:
-                            print("Ciseaux vs. Papier, vous gagnez le round!");
-                            wins++;
-                            break;
-
-                        case 2:
-                            print("Ciseaux vs. Ciseaux, round nulle!");
-                            break;
-
-                        default:
-                            print("Dafuq kossé que t'essaye de faire lo?!?!?!");
-                            return;
-                    }
-                    break;
-
-                default:
-                    print("Dafuq kossé que t'essaye de faire lo?!?!?!");
-                    return;
-            }
-        }
-
-    }
-
+    }*/
 }

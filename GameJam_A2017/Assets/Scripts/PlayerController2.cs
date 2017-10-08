@@ -12,6 +12,8 @@ public class PlayerController2 : Player
 	bool facingDown = true;
 	bool facingUp = false;
 	public bool canWalk = true;
+	public bool fight = false;
+	public bool waitVilain = false;
 	public GameObject textBox;
 	public GameObject choiceBox;
 	public GameObject prefabChoice;
@@ -40,11 +42,27 @@ public class PlayerController2 : Player
     // Update is called once per frame
 	void FixedUpdate() {
 
+		if (fight) {
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+			if (Input.GetKeyDown (KeyCode.Joystick2Button2) && !waitVilain) {
+				waitVilain = true;
+				curOpponent.Shifumi (0);
+			}
+			if (Input.GetKeyDown (KeyCode.Joystick2Button3) && !waitVilain) {
+				waitVilain = true;
+				curOpponent.Shifumi (1);
+			}
+			if (Input.GetKeyDown (KeyCode.Joystick2Button1) && !waitVilain) {
+				waitVilain = true;
+				curOpponent.Shifumi (2);
+			}
+			return;
+		}
 		if (!canWalk) {
 			GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-			if (Input.GetKeyDown (KeyCode.JoystickButton4))
+			if (Input.GetKeyDown (KeyCode.Joystick2Button4))
 				option--;
-			if (Input.GetKeyDown (KeyCode.JoystickButton5))
+			if (Input.GetKeyDown (KeyCode.Joystick2Button5))
 				option++;
 			if (option < 0)
 				option = nbChoices - 1;
@@ -61,7 +79,7 @@ public class PlayerController2 : Player
 					choiceList [i].GetComponentInChildren<Image> ().color = c;
 				}
 			}
-			if(Input.GetKeyDown(KeyCode.JoystickButton0)) {
+			if(Input.GetKeyDown(KeyCode.Joystick2Button0)) {
 				if (curAnswer [option] == true) {
 					points += curhouse.points;
 					curhouse.end (false);
@@ -72,12 +90,13 @@ public class PlayerController2 : Player
 						Destroy (choiceList [i]);
 					}
 					if (points >= GameManager.Instance.victoryCondition)
-						GameManager.Instance.endGame (1);
+						GameManager.Instance.endGame (0);
 				} else {
 					strike++;
-					choiceList [option].GetComponentInChildren<Image> ().color = Color.red;
+					Sprite sr = Resources.Load ("WindowWrong") as Sprite;
+					choiceList [option].GetComponentInChildren<Image> ().sprite = sr;
 					if (strike >= 3) {
-						curhouse.end (true);
+						curhouse.lose ();
 						choiceBox.SetActive (false);
 						textBox.SetActive (false);
 						canWalk = true;

@@ -6,6 +6,7 @@ public class Customers : MonoBehaviour {
 
 	int type;
 	public House curHouse;
+	bool available = true;
 
 	// Use this for initialization
 	void Start () {
@@ -21,26 +22,31 @@ public class Customers : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		Debug.Log ("Mada mada");
-		GameObject oth = other.gameObject;
-		int val = Random.Range (0, 2);
-		curHouse.time.Switch();
-		PlayerController1 p1 = oth.GetComponent<PlayerController1> ();
-		if (p1 == null) {
+		if (available) {
+			Debug.Log ("Mada mada");
+			GameObject oth = other.gameObject;
+			int val = Random.Range (0, 2);
+			PlayerController1 p1 = oth.GetComponent<PlayerController1> ();
 			PlayerController2 p2 = oth.GetComponent<PlayerController2> ();
-			p2.canWalk = false;
-			textBoxManagerAdpated txt = gameObject.GetComponent<textBoxManagerAdpated> ();
-			txt.textBox = p1.textBox;
-			gameObject.GetComponent<textBoxManagerAdpated> ().EnableTextBox();
-			p2.curhouse = curHouse;
-			p2.choiceSetup(txt.categorie[val], txt.valeurLigne[val]);
-		} else {
-			p1.canWalk = false;
-			textBoxManagerAdpated txt = gameObject.GetComponent<textBoxManagerAdpated> ();
-			txt.textBox = p1.textBox;
-			gameObject.GetComponent<textBoxManagerAdpated> ().EnableTextBox();
-			p1.curhouse = curHouse;
-			p1.choiceSetup(txt.categorie[val], txt.valeurLigne[val]);
+			if (p1 == null) {
+				p2.canWalk = false;
+				textBoxManagerAdpated txt = gameObject.GetComponent<textBoxManagerAdpated> ();
+				txt.fastButton = KeyCode.Joystick2Button1;
+				txt.textBox = p2.textBox;
+				gameObject.GetComponent<textBoxManagerAdpated> ().EnableTextBox ();
+				p2.curhouse = curHouse;
+				p2.choiceSetup (txt.categorie [val], txt.valeurLigne [val]);
+			} else {
+				p1.canWalk = false;
+				textBoxManagerAdpated txt = gameObject.GetComponent<textBoxManagerAdpated> ();
+				txt.fastButton = KeyCode.Joystick1Button1;
+				txt.textBox = p1.textBox;
+				gameObject.GetComponent<textBoxManagerAdpated> ().EnableTextBox ();
+				p1.curhouse = curHouse;
+				p1.choiceSetup (txt.categorie [val], txt.valeurLigne [val]);
+			}
+			available = false;
+			curHouse.time.Switch ();
 		}
 	}
 }

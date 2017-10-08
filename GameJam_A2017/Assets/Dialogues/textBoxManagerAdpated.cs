@@ -24,6 +24,8 @@ public class textBoxManagerAdpated : MonoBehaviour
     public int currentLine;
     public int endAtLine;
 
+	public KeyCode fastButton;
+
     //public PlayerController player;
 
     public bool isActive;
@@ -92,7 +94,7 @@ public class textBoxManagerAdpated : MonoBehaviour
         }
 
 
-		if (Input.GetKeyDown(KeyCode.Joystick1Button1))
+		if (Input.GetKeyDown(fastButton))
         {
             if (!isTyping)
             {

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
 	public Animator anim;
     public Choix choice;
 	public House curhouse;
+	public Vilain curOpponent;
 
     // Use this for initialization
     void Start () {

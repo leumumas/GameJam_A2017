@@ -21,13 +21,18 @@ public class AnimationFin : MonoBehaviour {
     public bool isTyping;
     public bool cancelTyping;
 
-    public int scoreP1 = GameManager.Instance.player1.points;
-    public int scoreP2 = GameManager.Instance.player2.points;
+    public int scoreP1;
+    public int scoreP2;
+
+	void Awake () {
+		scoreP1 = GameManager.Instance.p1;
+		scoreP2 = GameManager.Instance.p2;
+	}
 
     // Use this for initialization
     IEnumerator Start () {
         textHaut.text = "";
-        textBas.text = "";
+		textBas.text = "";
 
         btnRestart.enabled = false;    
 
@@ -56,12 +61,12 @@ public class AnimationFin : MonoBehaviour {
         switch (result) {
             case 0:
                 textBas.text = "Joueur 1!!!!";
-                spriteGagnant.GetComponent<SpriteRenderer>().sprite = GameManager.Instance.player1.GetComponent<SpriteRenderer>().sprite;
+				spriteGagnant.GetComponent<SpriteRenderer>().sprite = GameManager.Instance.sP1;
                 scoreText.text = "Score final: " + scoreP1;
                 break;
             case 1:
                 textBas.text = "Joueur 2!!!!";
-                spriteGagnant.GetComponent<SpriteRenderer>().sprite = GameManager.Instance.player2.GetComponent<SpriteRenderer>().sprite;
+				spriteGagnant.GetComponent<SpriteRenderer>().sprite = GameManager.Instance.sP2;
                 scoreText.text = "Score final: " + scoreP2;
                 break;
             case 2:
