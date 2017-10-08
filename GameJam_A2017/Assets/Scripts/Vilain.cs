@@ -28,19 +28,19 @@ public class Vilain : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
     {
 		if (available) {
-			available = false;
 			Debug.Log ("j'te touche");
 			GameObject oth = other.gameObject;
 			p1 = oth.GetComponent<PlayerController1> ();
-			if (p1 == null) {
-				p2 = oth.GetComponent<PlayerController2> ();
-				if (p2 != null) {
+			p2 = oth.GetComponent<PlayerController2> ();
+			if (p1.curOpponent != null || !p1.fight || p2.canWalk || !p2.fight) {
+				available = false;
+				if (p1 == null) {
 					p2.fight = true;
 					p2.curOpponent = this;
+				} else {
+					p1.fight = true;
+					p1.curOpponent = this;
 				}
-			} else {
-				p1.fight = true;
-				p1.curOpponent = this;
 			}
 		}
 	}
