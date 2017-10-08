@@ -158,6 +158,16 @@ public class CharacterSelect : MonoBehaviour {
         Application.Quit();
     }
 
+    public void Continue()
+    {
+        SceneManager.LoadScene("Noelson");
+    }
+
+    public void Game()
+    {
+        SceneManager.LoadScene("Samuel");
+    }
+
     public void SetDifficulty(int value)
     {
         switch (value)
