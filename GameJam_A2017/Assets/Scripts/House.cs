@@ -13,6 +13,7 @@ public class House : MonoBehaviour {
 	public int points;
     int vilainSpawn;
 	public Timer time;
+	public GameObject sold;
 
 
 	// Use this for initialization
@@ -54,25 +55,24 @@ public class House : MonoBehaviour {
 
 	public void clientComing () {
 		disponible = false;
-		gameObject.GetComponent<SpriteRenderer> ().color = Color.blue;
 		Vector3 posFinal = new Vector3();
 		switch (posClient) {
 		case 0: 
-			posFinal = new Vector3(0f,1.1f,0f);
+			posFinal = new Vector3(0f,1f,0f);
 			break;
 		case 1: 
-			posFinal = new Vector3(1.1f,0f,0f);
+			posFinal = new Vector3(1f,0f,0f);
 			break;
 		case 2: 
-			posFinal = new Vector3(0f,-1.1f,0f);
+			posFinal = new Vector3(0f,-1f,0f);
 			break;
 		case 3: 
-			posFinal = new Vector3(-1.1f,0f,0f);
+			posFinal = new Vector3(-1f,0f,0f);
 			break;
 		}
 		customer = Instantiate (prefabCustomer, (gameObject.transform.localPosition + posFinal), Quaternion.identity);
         print("customer instancier");
-		customer.transform.parent = gameObject.transform;
+		customer.transform.SetParent(gameObject.transform);
 		customer.GetComponent<Customers> ().curHouse = this;
         time = gameObject.GetComponent<Timer>();
 		time.Switch();
@@ -80,22 +80,23 @@ public class House : MonoBehaviour {
 
 	public void end(bool timeOut) {
 		if (timeOut) {
-            vilainSpawn = Random.Range(0, 101);
-            if (vilainSpawn > 75)
-            {
-                nVilain = Vilain.Instantiate(vilain, customer.transform);
-                print("Vilain spawned");
-                for (int i = 0; i < 30; i++)
-                {
-                    System.Threading.Thread.Sleep(500);
-                    OnCollisionEnter2D(nVilain.GetComponent<Collision2D>());
-                }
-                Destroy(nVilain);
-                Destroy(gameObject);
-            }
-            else
-            { Destroy(gameObject); }
+			vilainSpawn = Random.Range (0, 101);
+			if (vilainSpawn > 75) {
+				nVilain = Vilain.Instantiate (vilain, customer.transform);
+				print ("Vilain spawned");
+				for (int i = 0; i < 30; i++) {
+					System.Threading.Thread.Sleep (500);
+					OnCollisionEnter2D (nVilain.GetComponent<Collision2D> ());
+				}
+				Destroy (nVilain);
+				Destroy (gameObject);
+			} else {
+				Destroy (gameObject);
+			}
 			Map.Instance.chooseHouse ();
+		} else {
+			Destroy (customer);
+			sold.SetActive (true);
 		}
 	}
 

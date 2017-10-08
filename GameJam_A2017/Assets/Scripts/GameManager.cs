@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 	private Map worldMap;
 	public PlayerController2 player2;
 
+
 	void Awake() {
 		hanzo = this;
 	}

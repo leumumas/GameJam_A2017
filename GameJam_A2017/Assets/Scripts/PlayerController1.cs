@@ -65,6 +65,7 @@ public class PlayerController1: Player {
 			if(Input.GetKeyDown(KeyCode.JoystickButton0)) {
 				if (curAnswer [option] == true) {
 					points += curhouse.points;
+					curhouse.end (false);
 					choiceBox.SetActive (false);
 					textBox.SetActive (false);
 					canWalk = true;
