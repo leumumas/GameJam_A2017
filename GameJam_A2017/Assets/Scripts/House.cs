@@ -81,24 +81,26 @@ public class House : MonoBehaviour {
 	public void lose () {
 		gameObject.tag = "Destroy";
 		Object[] obSr = Resources.LoadAll ("explosion");
-		Sprite sr = (Sprite)obSr [7];
+		Sprite sr = (Sprite)obSr [4];
 		gameObject.GetComponent<SpriteRenderer> ().sprite = sr;
 		gameObject.GetComponent<Collider2D> ().enabled = false;
 		Destroy (customer);
 		if (nVilain != null)
 			Destroy (nVilain);
-		Map.Instance.chooseHouse ();
+		else
+			Map.Instance.chooseHouse ();
 	}
 
 	public void end(bool timeOut) {
 		if (timeOut) {
 			vilainSpawn = Random.Range (0, 100);
-			if (vilainSpawn > 0) {
+			if (vilainSpawn > 75) {
 				nVilain = Vilain.Instantiate (vilain, customer.gameObject.transform.position, Quaternion.identity);
 				nVilain.transform.SetParent (this.gameObject.transform);
 				nVilain.GetComponent<Vilain> ().curHouse = this;
 				Destroy (customer.gameObject);
 				print ("Vilain spawned");
+				Map.Instance.chooseHouse ();
 				/*for (int i = 0; i < 30; i++) {
 					System.Threading.Thread.Sleep (500);
 					OnCollisionEnter2D (nVilain.GetComponent<Collision2D> ());

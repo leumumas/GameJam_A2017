@@ -24,13 +24,21 @@ public class Customers : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other) {
 		if (available) {
 			Debug.Log ("Mada mada");
+			bool dial;
 			GameObject oth = other.gameObject;
 			int val = Random.Range (0, 2);
 			PlayerController1 p1 = oth.GetComponent<PlayerController1> ();
 			PlayerController2 p2 = oth.GetComponent<PlayerController2> ();
-			if (p1.canWalk||!p1.fight||p2.canWalk||!p2.fight) {
+			if (p1 == null) {
+				dial = !p2.inDialogue;
+			} else {
+				dial = !p1.inDialogue;
+			}
+			if (dial) {
+				available = false;
 				if (p1 == null) {
 					p2.canWalk = false;
+					p2.inDialogue = true;
 					textBoxManagerAdpated txt = gameObject.GetComponent<textBoxManagerAdpated> ();
 					txt.fastButton = KeyCode.Joystick2Button1;
 					txt.textBox = p2.textBox;
@@ -39,6 +47,7 @@ public class Customers : MonoBehaviour {
 					p2.choiceSetup (txt.categorie [val], txt.valeurLigne [val]);
 				} else {
 					p1.canWalk = false;
+					p1.inDialogue = true;
 					textBoxManagerAdpated txt = gameObject.GetComponent<textBoxManagerAdpated> ();
 					txt.fastButton = KeyCode.Joystick1Button1;
 					txt.textBox = p1.textBox;
@@ -46,7 +55,6 @@ public class Customers : MonoBehaviour {
 					p1.curhouse = curHouse;
 					p1.choiceSetup (txt.categorie [val], txt.valeurLigne [val]);
 				}
-				available = false;
 				curHouse.time.Switch ();
 			}
 		}

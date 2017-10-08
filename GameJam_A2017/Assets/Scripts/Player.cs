@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
     public Choix choice;
 	public House curhouse;
 	public Vilain curOpponent;
+	public bool inDialogue = false;
 
     // Use this for initialization
     void Start () {
@@ -29,6 +30,11 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void Victoire () {
+		if (points >= GameManager.Instance.victoryCondition)
+			GameManager.Instance.endGame (0);
 	}
 
     //Typechange, 0:Flash, 1:Get through things, 2:Mentalist
