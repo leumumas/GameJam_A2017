@@ -14,10 +14,12 @@ public class House : MonoBehaviour {
     int vilainSpawn;
 	public Timer time;
 	public GameObject sold;
+	public Animator anim;
 
 
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator>();
 		Map.Instance.addHouses (this);
         print("add houses");
 		typeDefine (Type);
@@ -89,10 +91,10 @@ public class House : MonoBehaviour {
 					OnCollisionEnter2D (nVilain.GetComponent<Collision2D> ());
 				}
 				Destroy (nVilain);
-				Destroy (gameObject);
-			} else {
-				Destroy (gameObject);
 			}
+			/*anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("House");
+			System.Threading.Thread.Sleep (1000);*/
+			Destroy (gameObject);
 			Map.Instance.chooseHouse ();
 		} else {
 			Destroy (customer);
