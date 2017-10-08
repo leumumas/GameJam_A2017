@@ -97,6 +97,8 @@ public class House : MonoBehaviour {
 		} else {
 			Destroy (customer);
 			sold.SetActive (true);
+			Map.Instance.onHouses.Remove (this);
+			Map.Instance.chooseHouse ();
 		}
 	}
 

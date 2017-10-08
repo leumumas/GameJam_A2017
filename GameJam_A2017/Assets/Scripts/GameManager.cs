@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
 
 
 	void Awake() {
+		DontDestroyOnLoad (gameObject);
 		hanzo = this;
 	}
 
@@ -56,10 +57,14 @@ public class GameManager : MonoBehaviour {
     }
 
 	public void endGame(int result) {
+		player1.canWalk = false;
+		player2.canWalk = false;
 		switch (result) {
 		case 0: //victoire p1
+			Debug.Log("Bravo P1 !!!");
 			break;
 		case 1: //victoire p2
+			Debug.Log("Bravo P2 !!!");
 			break;
 		case 2: //plus de maison
 			break;

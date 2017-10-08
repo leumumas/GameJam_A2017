@@ -72,6 +72,8 @@ public class PlayerController1: Player {
 					for (int i = 0; i < nbChoices; i++) {
 						Destroy (choiceList [i]);
 					}
+					if (points >= GameManager.Instance.victoryCondition)
+						GameManager.Instance.endGame (0);
 				} else {
 					strike++;
 					choiceList [option].GetComponentInChildren<Image> ().color = Color.red;
@@ -178,7 +180,7 @@ public class PlayerController1: Player {
 			choice.goodAnswer.RemoveAt (rnd);
 			choiceList.Add (individualChoice);
 		}
-		choiceBox.GetComponent<RectTransform>().position += new Vector3(0f, 1f, 0f);
+		//choiceBox.GetComponent<RectTransform>().position += new Vector3(0f, 1f, 0f);
 		strike = 0;
 	}
 }

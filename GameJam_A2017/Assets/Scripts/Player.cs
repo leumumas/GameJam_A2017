@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
     public int HP = 10;
     public int attack = 2;
     public int playerType = 0;
-    public int nbChoices = 4;
+    public int nbChoices = 7;
 	public int points = 0;
     public bool getThrough = false;
 	public float maxXpos, minXpos, maxYpos, minYpos;
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
         switch (playerType)
         {
             case 0:
-			maxSpeed = 15f;
+			maxSpeed = 2f;
 			anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("flashy");
                 break;
 

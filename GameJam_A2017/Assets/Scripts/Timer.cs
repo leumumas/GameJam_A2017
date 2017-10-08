@@ -15,7 +15,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         //Random(timeRemaining);//
-        time = Random.Range(30,60);
+        time = Random.Range(10,20);
 		maxTime = time;
 		active = false;
 		timerHud.gameObject.SetActive (false);

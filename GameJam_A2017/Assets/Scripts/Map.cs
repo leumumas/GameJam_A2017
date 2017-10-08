@@ -5,7 +5,7 @@ using UnityEngine;
 public class Map : MonoBehaviour {
 
 	private static Map hanzo = null;
-	private List<House> onHouses = new List<House>();
+	public List<House> onHouses = new List<House>();
 	private List<House> offHouses = new List<House>();
 	int numberHouse;
 	int numHouse = 0;
