@@ -15,7 +15,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         //Random(timeRemaining);//
-        time = Random.Range(10,20);
+        time = Random.Range(30,60);
 		maxTime = time;
 		active = false;
 		timerHud.gameObject.SetActive (false);
@@ -32,6 +32,8 @@ public class Timer : MonoBehaviour
 			if (time <= 0) { //Détruire le "gameObjet" attaché si le compteur arrive à 0:00
 				//playAudio = Bruh;//
 				House isHouse = gameObject.GetComponent<House> ();
+				timerHud.gameObject.SetActive (false);
+				active = false;
 				isHouse.end (true);
 			}
 			timerHud.value = time / maxTime;
