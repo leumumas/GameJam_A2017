@@ -20,6 +20,8 @@ public class PlayerController1: Player {
 	int strike;
 	int option = 0;
 
+    public Text txtScoreBox;
+
 	void Awake () {
 	}
 
@@ -29,6 +31,9 @@ public class PlayerController1: Player {
 		GameManager.Instance.player1 = this;
 		nbChoices = CharacterSelect.Instance.GetDifficulty();
 		TypeChange (CharacterSelect.Instance._player1);
+
+        txtScoreBox.text = "Score: " + points;
+
 		//int type = CharacterSelect.Instance._player1;
 		//TypeChange (type);
 	}
@@ -82,6 +87,9 @@ public class PlayerController1: Player {
 			}
 			return;
 		}
+
+        txtScoreBox.text = "Score: " + points;
+
         //Player 1
         H1Move = Input.GetAxis("Player1_axisX");
         V1Move = Input.GetAxis("Player1_axisY");
@@ -120,9 +128,6 @@ public class PlayerController1: Player {
             facingDown = true;
             facingUp = false;
         }
-
-       
-        
 
         //Position clamping
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, minXpos, maxXpos), Mathf.Clamp(transform.position.y, minYpos, maxYpos));

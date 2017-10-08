@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController2 : Player
 {
@@ -15,6 +16,8 @@ public class PlayerController2 : Player
 	public GameObject choiceBox;
 	public GameObject prefabChoice;
 
+    public Text txtScoreBox;
+
 	void Awake () {
 	}
 
@@ -25,6 +28,8 @@ public class PlayerController2 : Player
 		GameManager.Instance.player2 = this;
 		nbChoices = CharacterSelect.Instance.GetDifficulty();
 		TypeChange (CharacterSelect.Instance._player2);
+
+        txtScoreBox.text = "Score: " + points;
     }
 
     // Update is called once per frame
@@ -73,8 +78,10 @@ public class PlayerController2 : Player
             facingUp = false;
         }
 
+        txtScoreBox.text = "Score: " + points;
+
         //Position clamping
-		transform.position = new Vector2(Mathf.Clamp(transform.position.x, minXpos, maxXpos), Mathf.Clamp(transform.position.y, minYpos, maxYpos));
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x, minXpos, maxXpos), Mathf.Clamp(transform.position.y, minYpos, maxYpos));
 
 		anim.SetBool ("FacingUp", facingUp);
 		anim.SetBool ("FacingDown", facingDown);
