@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	public int victoryCondition = 10;
-	public int numStartHouse = 6;
+	public int numStartHouse = 10;
 	private static GameManager hanzo = null;
 	public PlayerController1 player1;
 	private Map worldMap;
@@ -24,9 +24,10 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		worldMap = Map.Instance;
 		if (CharacterSelect.Instance == null)
-			victoryCondition = 10;
+			victoryCondition = 1;
 		else
-			victoryCondition = CharacterSelect.Instance.GetDifficulty() * 2;
+			victoryCondition = CharacterSelect.Instance.GetDifficulty() * 1;
+		Debug.Log ("victoryCondition:" + victoryCondition);
 	}
 	
 	// Update is called once per frame

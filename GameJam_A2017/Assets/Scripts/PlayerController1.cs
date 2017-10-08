@@ -16,6 +16,7 @@ public class PlayerController1: Player {
 	public GameObject textBox;
 	public GameObject choiceBox;
 	public GameObject prefabChoice;
+	public GameObject fightSp;
 	private List<GameObject> choiceList = new List<GameObject> ();
 	List<string> curChoice = new List<string>();
 	List<bool> curAnswer = new List<bool>();
@@ -88,11 +89,11 @@ public class PlayerController1: Player {
 					choiceBox.SetActive (false);
 					textBox.SetActive (false);
 					canWalk = true;
+					inDialogue = false;
 					for (int i = 0; i < nbChoices; i++) {
 						Destroy (choiceList [i]);
 					}
-					if (points >= GameManager.Instance.victoryCondition)
-						GameManager.Instance.endGame (0);
+					Victoire ();
 				} else {
 					strike++;
 					Sprite sr = Resources.Load ("WindowWrong") as Sprite;
@@ -102,6 +103,7 @@ public class PlayerController1: Player {
 						choiceBox.SetActive (false);
 						textBox.SetActive (false);
 						canWalk = true;
+						inDialogue = false;
 						for (int i = 0; i < nbChoices; i++) {
 							Destroy (choiceList [i]);
 						}
@@ -116,7 +118,6 @@ public class PlayerController1: Player {
         //Player 1
         H1Move = Input.GetAxis("Player1_axisX");
         V1Move = Input.GetAxis("Player1_axisY");
-		Debug.Log (V1Move);
         GetComponent<Rigidbody2D>().velocity = new Vector2(H1Move * maxSpeed, V1Move * maxSpeed);
 
         //Facing direction
