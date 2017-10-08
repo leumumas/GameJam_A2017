@@ -1,0 +1,3 @@
+Je connais bien le propriétaire, on devrait pouvoir trouver une solution.;1
+Ce modèle de maison est plutôt commun, mais fraichement rénover.;2
+Cette maison neuve n'as pas besoin de rénovation, vous pourrez vous occuper à autre chose.;3
