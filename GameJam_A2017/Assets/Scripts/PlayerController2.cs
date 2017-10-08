@@ -32,9 +32,9 @@ public class PlayerController2 : Player
 		setAnim ();
 		GameManager.Instance.player2 = this;
 		nbChoices = CharacterSelect.Instance.GetDifficulty();
-		TypeChange (2);//CharacterSelect.Instance._player2);
+		TypeChange(CharacterSelect.Instance._player2);
 
-        txtScoreBox.text = "Score: " + points;
+		txtScoreBox.text = "Score: " + points + "K";
     }
 
     // Update is called once per frame
@@ -128,7 +128,7 @@ public class PlayerController2 : Player
             facingUp = false;
         }
 
-        txtScoreBox.text = "Score: " + points;
+		txtScoreBox.text = "Score: " + points + "K";
 
         //Position clamping
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, minXpos, maxXpos), Mathf.Clamp(transform.position.y, minYpos, maxYpos));

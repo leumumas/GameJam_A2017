@@ -32,7 +32,7 @@ public class PlayerController1: Player {
 		nbChoices = CharacterSelect.Instance.GetDifficulty();
 		TypeChange (CharacterSelect.Instance._player1);
 
-        txtScoreBox.text = "Score: " + points;
+        txtScoreBox.text = "Score: " + points + "K";
 
 		//int type = CharacterSelect.Instance._player1;
 		//TypeChange (type);
@@ -91,7 +91,7 @@ public class PlayerController1: Player {
 			return;
 		}
 
-        txtScoreBox.text = "Score: " + points;
+		txtScoreBox.text = "Score: " + points + "K";
 
         //Player 1
         H1Move = Input.GetAxis("Player1_axisX");

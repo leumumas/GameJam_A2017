@@ -6,7 +6,6 @@ public class House : MonoBehaviour {
 
 	int Type = 1;
 	public int posClient;
-	bool disponible = true;
 	public GameObject prefabCustomer;
     public GameObject vilain;
 	GameObject customer, nVilain;
@@ -56,7 +55,6 @@ public class House : MonoBehaviour {
 	}
 
 	public void clientComing () {
-		disponible = false;
 		Vector3 posFinal = new Vector3();
 		switch (posClient) {
 		case 0: 
@@ -82,7 +80,7 @@ public class House : MonoBehaviour {
 
 	public void end(bool timeOut) {
 		if (timeOut) {
-			vilainSpawn = Random.Range (0, 101);
+			//vilainSpawn = Random.Range (0, 101);
 			if (vilainSpawn > 75) {
 				nVilain = Vilain.Instantiate (vilain, customer.transform);
 				print ("Vilain spawned");
@@ -94,13 +92,18 @@ public class House : MonoBehaviour {
 			}
 			/*anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("House");
 			System.Threading.Thread.Sleep (1000);*/
-			Destroy (gameObject);
+			gameObject.tag = "Destroy";
+			Object [] obSr = Resources.LoadAll("explosion");
+			Sprite sr = (Sprite)obSr[7];
+			gameObject.GetComponent<SpriteRenderer> ().sprite = sr;
+			Destroy (customer);
 			Map.Instance.chooseHouse ();
 		} else {
 			Destroy (customer);
 			sold.SetActive (true);
 			Map.Instance.onHouses.Remove (this);
 			Map.Instance.chooseHouse ();
+			gameObject.tag = "Sold";
 		}
 	}
 
